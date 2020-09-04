@@ -71,13 +71,15 @@ function getArticlesDefault() {
     });
 }
 getArticlesDefault();
+//Below this line is stretch goals
 
+//Function to clear children from page
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
 }
-
+//Creates javascript article children on page
 function getArticlesSpecificJavascript() {
   axios
     .get("https://lambda-times-api.herokuapp.com/articles")
@@ -90,6 +92,7 @@ function getArticlesSpecificJavascript() {
     })
     .catch();
 }
+//Creates bootstrap article children on page
 function getArticlesSpecificBootstrap() {
   axios
     .get("https://lambda-times-api.herokuapp.com/articles")
@@ -102,6 +105,7 @@ function getArticlesSpecificBootstrap() {
     })
     .catch();
 }
+//Creates technology article children on page
 function getArticlesSpecificTechnology() {
   axios
     .get("https://lambda-times-api.herokuapp.com/articles")
@@ -114,6 +118,7 @@ function getArticlesSpecificTechnology() {
     })
     .catch();
 }
+//Creates jquery article children on page
 function getArticlesSpecificJquery() {
   axios
     .get("https://lambda-times-api.herokuapp.com/articles")
@@ -126,6 +131,7 @@ function getArticlesSpecificJquery() {
     })
     .catch();
 }
+//Creates node article children on page
 function getArticlesSpecificNode() {
   axios
     .get("https://lambda-times-api.herokuapp.com/articles")
@@ -138,7 +144,7 @@ function getArticlesSpecificNode() {
     })
     .catch();
 }
-
+//event listener to check if articles need to be changed
 document.addEventListener("click", function (event) {
   if (event.target.textContent === "javascript") {
     console.log("testing");
