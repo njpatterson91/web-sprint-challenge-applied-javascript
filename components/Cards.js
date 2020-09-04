@@ -53,19 +53,108 @@ function cards(props) {
   });
   return divCard;
 }
-
-axios
-  .get("https://lambda-times-api.herokuapp.com/articles")
-  .then((props) => {
-    const data = props.data.articles;
-    for (const i in data) {
-      //console.log("test", data[i]);
-      for (const j in data[i]) {
-        //console.log(data[i][j]);
-        cardsEntryPoint.appendChild(cards(data[i][j]));
+function getArticlesDefault() {
+  axios
+    .get("https://lambda-times-api.herokuapp.com/articles")
+    .then((props) => {
+      const data = props.data.articles;
+      for (const i in data) {
+        //console.log("test", data[i]);
+        for (const j in data[i]) {
+          //console.log(data[i][j]);
+          cardsEntryPoint.appendChild(cards(data[i][j]));
+        }
       }
-    }
-  })
-  .catch((err) => {
-    console.log("This aint it chief", err);
-  });
+    })
+    .catch((err) => {
+      console.log("This aint it chief", err);
+    });
+}
+getArticlesDefault();
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
+function getArticlesSpecificJavascript() {
+  axios
+    .get("https://lambda-times-api.herokuapp.com/articles")
+    .then((props) => {
+      const data = props.data.articles.javascript;
+      for (const i in data) {
+        //console.log("testing", data[i]);
+        cardsEntryPoint.appendChild(cards(data[i]));
+      }
+    })
+    .catch();
+}
+function getArticlesSpecificBootstrap() {
+  axios
+    .get("https://lambda-times-api.herokuapp.com/articles")
+    .then((props) => {
+      const data = props.data.articles.bootstrap;
+      for (const i in data) {
+        //console.log("testing", data[i]);
+        cardsEntryPoint.appendChild(cards(data[i]));
+      }
+    })
+    .catch();
+}
+function getArticlesSpecificTechnology() {
+  axios
+    .get("https://lambda-times-api.herokuapp.com/articles")
+    .then((props) => {
+      const data = props.data.articles.technology;
+      for (const i in data) {
+        //console.log("testing", data[i]);
+        cardsEntryPoint.appendChild(cards(data[i]));
+      }
+    })
+    .catch();
+}
+function getArticlesSpecificJquery() {
+  axios
+    .get("https://lambda-times-api.herokuapp.com/articles")
+    .then((props) => {
+      const data = props.data.articles.jquery;
+      for (const i in data) {
+        //console.log("testing", data[i]);
+        cardsEntryPoint.appendChild(cards(data[i]));
+      }
+    })
+    .catch();
+}
+function getArticlesSpecificNode() {
+  axios
+    .get("https://lambda-times-api.herokuapp.com/articles")
+    .then((props) => {
+      const data = props.data.articles.node;
+      for (const i in data) {
+        //console.log("testing", data[i]);
+        cardsEntryPoint.appendChild(cards(data[i]));
+      }
+    })
+    .catch();
+}
+
+document.addEventListener("click", function (event) {
+  if (event.target.textContent === "javascript") {
+    console.log("testing");
+    removeAllChildNodes(cardsEntryPoint);
+    getArticlesSpecificJavascript();
+  } else if (event.target.textContent === "bootstrap") {
+    removeAllChildNodes(cardsEntryPoint);
+    getArticlesSpecificBootstrap();
+  } else if (event.target.textContent === "technology") {
+    removeAllChildNodes(cardsEntryPoint);
+    getArticlesSpecificTechnology();
+  } else if (event.target.textContent === "jquery") {
+    removeAllChildNodes(cardsEntryPoint);
+    getArticlesSpecificJquery();
+  } else if (event.target.textContent === "node.js") {
+    removeAllChildNodes(cardsEntryPoint);
+    getArticlesSpecificNode();
+  }
+});
