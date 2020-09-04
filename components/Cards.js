@@ -48,20 +48,20 @@ function cards(props) {
   divAuthor.appendChild(divImg);
   divImg.appendChild(imgSrc);
   divAuthor.appendChild(authSpan);
-
+  divCard.addEventListener("click", function (event) {
+    console.log(props.headline);
+  });
   return divCard;
 }
 
 axios
   .get("https://lambda-times-api.herokuapp.com/articles")
   .then((props) => {
-    //console.log(props.data.articles);
     const data = props.data.articles;
     for (const i in data) {
-      console.log("test", data[i]);
+      //console.log("test", data[i]);
       for (const j in data[i]) {
-        console.log(data[i][j]);
-        // cardsEntryPoint(cards(data[i][j])
+        //console.log(data[i][j]);
         cardsEntryPoint.appendChild(cards(data[i][j]));
       }
     }
